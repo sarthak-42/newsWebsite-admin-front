@@ -52,7 +52,7 @@ const Login = () => {
 
         if (validateForm()) {
             try {
-               const response = await axios.post('http://localhost:5000/users/signin', { email, password });
+               const response = await axios.post('http://localhost:5000/api/users/signin', { email, password });
                 // alert('Login successful');
             
                 sessionStorage.setItem("xios", JSON.stringify(response.data));

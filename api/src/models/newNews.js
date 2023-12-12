@@ -3,19 +3,26 @@ const mongoose = require('mongoose')
 const NewsSchema = mongoose.Schema({
     title:{
         type: String,
-        required: true
+        required: false
     },
     description:{
         type: String,
-        required: true
+        required: false
     },
-    img:
-        {
-            data: Buffer,
-            contentType: String
-        }
+    img:{
+            type: String,
+            required: false
+    },
+    category:{
+        type: String,
+        required: false
+    },
+    videoUrl:{
+        type:String,
+        required: false
+    }
 
-}, {timeStamps: true});
+}, {timestamps : true});
 
 
 module.exports = mongoose.model('News', NewsSchema)
