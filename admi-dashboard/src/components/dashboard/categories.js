@@ -53,13 +53,13 @@ const Categories = () => {
         },
     };
     // console.log('image path --', formData.img)
-      const apiUrl = "http://localhost:5000/api/news/addNews"
+      const apiUrl = "/api/news/addNews"
     try {
       const {response} = await axios.post(
         apiUrl, formDataToSend, config
    
       );
-
+          console.log(formDataToSend)
       alert("news added successfully");
       console.log(response);
     } catch (error) {
