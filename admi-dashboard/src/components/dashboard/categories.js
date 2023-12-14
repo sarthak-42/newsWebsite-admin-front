@@ -2,8 +2,27 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 // import { styled } from '@mui/material/styles';
 import Button from "@mui/material/Button";
+import Box from '@mui/material/Box';
+
+import Modal from '@mui/material/Modal';
+// import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+// import './App.css';
+import VerifiedIcon from '@mui/icons-material/Verified';
 // import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import axios from "axios";
+// import NewsAdded from "./newsAdded";
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 292,
+  bgcolor: 'background.paper',
+  border: '1px solid #000',
+  p: 4,
+  textAlign:'center'
+};
 
 const Categories = () => {
 //   const [title, setTitle] = useState("");
@@ -16,9 +35,12 @@ const Categories = () => {
     title: "",
     category: "",
     desc: "",
-    image: null,
+    img: null,
     videoUrl: "",
   });
+  const [open, setOpen] = useState(false);
+//   const handleOpen = () => setOpen(true);
+ const handleClose = () =>{setOpen(false)}
   const handleChange = (e) => {
     e.persist();
     const { name, value, type } = e.target;
@@ -47,9 +69,10 @@ const Categories = () => {
     formDataToSend.append("videoUrl", formData.videoUrl);
 
     const config = {
-        Headers: {
+        headers: {
             // "Content-type": "application/json",
-            "Content-Type": "multipart/form-data",
+            "Content-type": "multipart/form-data",
+           
         },
     };
     // console.log('image path --', formData.img)
@@ -60,7 +83,8 @@ const Categories = () => {
    
       );
           console.log(formDataToSend)
-      alert("news added successfully");
+        setOpen(true)
+      // alert("news added successfully");
       console.log(response);
     } catch (error) {
       console.error("Error", error.response);
@@ -200,6 +224,19 @@ const Categories = () => {
             Add
           </button>
         </form>
+        <Modal
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="keep-mounted-modal-title" variant="h6" component="h2" style={{paddingTop: "20px"}}>
+            News Add Successfully <VerifiedIcon style={{position:"absolute", top:"20px", left:"46%", color:"#1aa13e", fontSize:"30px"}}/>
+          </Typography>
+        </Box>
+      </Modal>
       </div>
     </>
   );

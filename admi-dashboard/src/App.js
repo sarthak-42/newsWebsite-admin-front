@@ -10,6 +10,7 @@ import Dashboard from './pages/dashboard';
 import View from './components/dashboard/View';
 import Login from './components/account/login';
 import NotFound from './pages/NotFound';
+// import NewsAdded from './components/dashboard/newsAdded';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/featured" element={<View/>}/>
         <Route path="/categories" element={<NotFound/>}/>
+        {/* <Route path="/added" element={<NewsAdded/>}/> */}
         {/* <Route path="/products" element={<Products />}/> */}
         {/* <Route path="/settings" element={<Settings />}/> */}
       </Routes>

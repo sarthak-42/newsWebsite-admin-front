@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // import DashboardIcon from '@mui/icons-material/Dashboard';
 import FeedIcon from '@mui/icons-material/Feed';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
-import LogoutIcon from '@mui/icons-material/Logout';
+// import LogoutIcon from '@mui/icons-material/Logout';
 // import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 // import SettingsIcon from '@mui/icons-material/Settings';
@@ -21,7 +21,7 @@ const PortalHeader = ({ children }) => {
         <div className='dashboard'>
             <div className={isActive ? 'is_active dashboard_left' : 'dashboard_left'}>
                 <div className='dashboard_left_content'>
-                    <Link className='logo' href='#' alt="logo">
+                    <Link className='logo' href='/' alt="logo">
                         <img className='large_logo' src={ImageIcons.site_logo} alt="fullLogo" />
                         <img className='small_logo' src={ImageIcons.site_logo} alt="logo" />
                     </Link>
@@ -34,10 +34,10 @@ const PortalHeader = ({ children }) => {
                                 ))}
                             </ul>
                         </div>
-                        <Link className='log-out' href='/' alt="logout">
+                        {/* <Link className='log-out' href='/' alt="logout">
                             <LogoutIcon />
                             <span className='linkText'>Log Out</span>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>
