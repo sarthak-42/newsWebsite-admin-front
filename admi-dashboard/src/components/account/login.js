@@ -52,7 +52,7 @@ const Login = () => {
 
         if (validateForm()) {
             try {
-               const response = await axios.post('/api/users/signin', { email, password });
+               const response = await axios.post('https://my-punjabi-admin-server.onrender.com/api/users/signin', { email, password });
                 // alert('Login successful');
             
                 sessionStorage.setItem("xios", JSON.stringify(response.data));

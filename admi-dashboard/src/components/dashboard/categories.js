@@ -76,7 +76,7 @@ const Categories = () => {
         },
     };
     // console.log('image path --', formData.img)
-      const apiUrl = "/api/news/addNews"
+      const apiUrl = "https://my-punjabi-admin-server.onrender.com/api/news/addNews"
     try {
       const {response} = await axios.post(
         apiUrl, formDataToSend, config
