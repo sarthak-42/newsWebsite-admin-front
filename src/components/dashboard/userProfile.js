@@ -8,16 +8,31 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import AccountContext from '../../utils/AccountContext';
 const UserProfile = () => {
     const navigate = useNavigate()
+    const { setLogin, setUserData} = React.useContext(AccountContext)
+    // const { logout } = React.useContext(AccountContext);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const logOutHandler = (e) =>{
+        e.preventDefault()
+        sessionStorage.removeItem('userInfo');
+        setLogin(false)
+        setUserData(null)
         navigate('/')
+
+    }
+    const handleClose = () => {
+        // logout();
+        // sessionStorage.removeItem('userInfo');
+        setAnchorEl(null)
+        
     };
+
     return (
         <>
            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -38,7 +53,7 @@ const UserProfile = () => {
                 anchorEl={anchorEl}
                 id="account-menu"
                 open={open}
-                onClose={handleClose}
+                // onClose={handleClose}
                 onClick={handleClose}
                 PaperProps={{
                     elevation: 0,
@@ -69,7 +84,7 @@ const UserProfile = () => {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose} onc>
+                <MenuItem onClick={logOutHandler}>
                     <ListItemIcon>
                         <LogoutIcon fontSize="small" />
                     </ListItemIcon>

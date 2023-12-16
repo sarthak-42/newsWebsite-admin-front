@@ -14,6 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const PortalHeader = ({ children }) => {
     const [isActive, setIsActive] = useState(false);
+    
     const handleClick = event => {
         setIsActive(current => !current);
     };

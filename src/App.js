@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import { useEffect, useState } from 'react';
 import './App.css';
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
@@ -10,11 +10,34 @@ import Dashboard from './pages/dashboard';
 import View from './components/dashboard/View';
 import Login from './components/account/login';
 import NotFound from './pages/NotFound';
+import NewsList from './components/dashboard/newsList';
+import AccountContext from './utils/AccountContext';
 // import NewsAdded from './components/dashboard/newsAdded';
 
 
 function App() {
+  const [login, setLogin] = useState(false);
+  const [userData, setUserData] = useState(null);
+
+  const data = {
+    login,
+    setLogin,
+    userData,
+    setUserData,
+  };
+  const sessionData = sessionStorage.getItem("userInfo");
+  useEffect(() => {
+    if (sessionData) {
+      setLogin(true);
+      setUserData(JSON.parse(sessionData));
+    } else {
+      setLogin(false);
+      setUserData(null);
+    }
+  }, [setLogin, setUserData]);
+
   return (
+    <AccountContext.Provider value={data}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}/>
@@ -23,11 +46,12 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/featured" element={<View/>}/>
         <Route path="/categories" element={<NotFound/>}/>
-        {/* <Route path="/added" element={<NewsAdded/>}/> */}
+        <Route path="/newsList" element={<NewsList/>}/>
         {/* <Route path="/products" element={<Products />}/> */}
         {/* <Route path="/settings" element={<Settings />}/> */}
       </Routes>
     </BrowserRouter>
+    </AccountContext.Provider>
   );
 }
 
