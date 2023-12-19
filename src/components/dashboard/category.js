@@ -171,7 +171,7 @@ const Category = () => {
             margin="normal"
             placeholder="For English"
             sx={{
-              backgroundColor: "white", 
+              backgroundColor: "white", // Set the background color of the input field
             }}
           />
           {/* <TextField
@@ -192,7 +192,7 @@ const Category = () => {
         <Button
           type="submit"
           variant="contained"
-          color="#0d3b89"
+        //   color="primary"
           className="mt-3"
         >
           Submit
