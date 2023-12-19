@@ -192,7 +192,7 @@ const Category = () => {
         <Button
           type="submit"
           variant="contained"
-          color="primary"
+          color="#0d3b89"
           className="mt-3"
         >
           Submit
