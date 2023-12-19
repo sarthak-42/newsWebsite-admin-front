@@ -26,8 +26,8 @@ function App() {
     userData,
     setUserData,
   };
-  const sessionData = sessionStorage.getItem("userInfo");
   useEffect(() => {
+    const sessionData = sessionStorage.getItem("userInfo");
     if (sessionData) {
       setLogin(true);
       setUserData(JSON.parse(sessionData));
