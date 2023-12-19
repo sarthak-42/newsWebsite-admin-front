@@ -78,6 +78,27 @@ const Categories = () => {
     e.persist();
     const { name, value, type } = e.target;
 
+
+    
+  if (name === "videoUrl" && value.trim() !== "") {
+    // Check if the entered value is a valid URL
+    try {
+      new URL(value);
+    } catch (error) {
+      alert("Please enter a valid URL for the video.");
+      return;
+    }
+  }
+  if (name === "img" && type === "file") {
+    const file = e.target.files[0];
+
+    // Check if the selected file is an image
+    if (file && !file.type.startsWith("image/")) {
+      alert("Please select a valid image file.");
+      return;
+    }
+  }
+
     const newValue =
       name === "img" && type === "file" ? e.target.files[0] : value;
 
@@ -93,6 +114,12 @@ const Categories = () => {
     e.preventDefault();
 
     // console.log(formData)
+    if (!formData.title.trim() ) {
+      alert("Title is required fields");
+      return;
+    }else if(!formData.category.trim()){
+      alert('Category is required fields')
+    }
 
     const formDataToSend = new FormData();
     formDataToSend.append("title", formData.title);
