@@ -82,7 +82,7 @@ const sideBarLinks = [
     {
         icon: <CategoryIcon />,
         title: "Categories",
-        handle: "/categories",
+        handle: "/category",
     },
     // {
     //     icon: <SettingsIcon />,

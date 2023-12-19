@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 // import { styled } from '@mui/material/styles';
 import Button from "@mui/material/Button";
@@ -31,6 +31,8 @@ const Categories = () => {
 //   const [videoUrl, setVideoUrl] = useState("");
 //   const [desc, setDesc] = useState("");
   // const [error, setError] = useState('');
+  const [categories, setCategories] = useState([]);
+
    const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -41,6 +43,37 @@ const Categories = () => {
   const [open, setOpen] = useState(false);
 //   const handleOpen = () => setOpen(true);
  const handleClose = () =>{setOpen(false)}
+
+ const getCategoryFunc = async () => {
+  try {
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+    const response = await axios.get(
+      "http://localhost:5000/api/category/getCategory",
+      config
+    );
+    const cat = response.data.categories.map((index) => {
+      return index.category;
+    });
+    console.log(cat)
+    setCategories(cat);
+    //   if (Array.isArray(response.data)) {
+    //     setCategoryValue({ data: response.data[0] });
+    //   } else {
+    //     console.error("Invalid response format. Expected an array.");
+    //   }
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+  }
+};
+
+
+
+
+
   const handleChange = (e) => {
     e.persist();
     const { name, value, type } = e.target;
@@ -76,7 +109,7 @@ const Categories = () => {
         },
     };
     // console.log('image path --', formData.img)
-      const apiUrl = "https://my-punjabi-admin-server.onrender.com/api/news/addNews"
+      const apiUrl = "http://localhost:5000/api/news/addNews"
     try {
       const {response} = await axios.post(
         apiUrl, formDataToSend, config
@@ -91,6 +124,10 @@ const Categories = () => {
     //   alert("Try again");
     }
   };
+
+   useEffect(() => {
+    getCategoryFunc();
+  }, []);
 
   return (
     <>
@@ -124,8 +161,8 @@ const Categories = () => {
             
 
                
-              <label className="form-label">Categories</label>
-              <input
+              {/* <label className="form-label">Categories</label> */}
+              {/* <input
                 className="inpit_row form-input"
                 name="category"
                 placeholder="Enter News Category"
@@ -133,7 +170,23 @@ const Categories = () => {
                 type="text"
                 onChange={handleChange}
          
-              />
+                
+              /> */}
+                 <label className="form-label">Categories</label>
+                 <select
+        id="default"
+        className="input_row form-input"
+        name="category"
+        value={formData.category}
+        onChange={handleChange}
+    >
+        <option value="" disabled>Select a category</option>
+        {categories.map((category) => (
+            <option key={category} value={category}>
+                {category}
+            </option>
+        ))}
+    </select>
            
             </Grid>
             <Grid item md={6}>

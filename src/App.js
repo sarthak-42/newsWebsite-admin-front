@@ -12,6 +12,7 @@ import Login from './components/account/login';
 import NotFound from './pages/NotFound';
 import NewsList from './components/dashboard/newsList';
 import AccountContext from './utils/AccountContext';
+import Category from './components/dashboard/category';
 // import NewsAdded from './components/dashboard/newsAdded';
 
 
@@ -47,7 +48,7 @@ function App() {
         <Route path="/featured" element={<View/>}/>
         <Route path="/categories" element={<NotFound/>}/>
         <Route path="/newsList" element={<NewsList/>}/>
-        {/* <Route path="/products" element={<Products />}/> */}
+        <Route path="/category" element={<Category/>}/>
         {/* <Route path="/settings" element={<Settings />}/> */}
       </Routes>
     </BrowserRouter>
