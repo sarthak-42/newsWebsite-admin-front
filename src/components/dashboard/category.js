@@ -193,7 +193,7 @@ const Category = () => {
           type="submit"
           variant="contained"
         //   color="primary"
-          className="mt-3"
+        className="absolute left-[0] w-[100%] h-[100%] bg-white"
         >
           Submit
         </Button>
