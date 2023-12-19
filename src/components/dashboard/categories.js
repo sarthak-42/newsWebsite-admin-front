@@ -52,7 +52,7 @@ const Categories = () => {
       },
     };
     const response = await axios.get(
-      "http://localhost:5000/api/category/getCategory",
+      "https://my-punjabi-admin-server.onrender.com/api/category/getCategory",
       config
     );
     const cat = response.data.categories.map((index) => {
@@ -109,7 +109,7 @@ const Categories = () => {
         },
     };
     // console.log('image path --', formData.img)
-      const apiUrl = "http://localhost:5000/api/news/addNews"
+      const apiUrl = "https://my-punjabi-admin-server.onrender.com/api/news/addNews"
     try {
       const {response} = await axios.post(
         apiUrl, formDataToSend, config
