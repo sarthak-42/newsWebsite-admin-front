@@ -85,9 +85,8 @@ const Category = () => {
 
       // Check if the category already exists
       if (
-        categoryValue?.data?.some(
-          (existingCategory) =>
-            existingCategory.category.toLowerCase() === category.toLowerCase()
+        categoryValue.some((existingCategory) =>
+            existingCategory.toLowerCase() === category.toLowerCase()
         )
       ) {
         // console.log("Category already exists");
