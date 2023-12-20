@@ -1,14 +1,14 @@
 // import * as React from 'react';
 // import { DataGrid } from '@mui/x-data-grid';
-// import { useDemoData, randomInt } from '@mui/x-data-grid-generator';
+// // import { useDemoData, randomInt } from '@mui/x-data-grid-generator';
 
-// function loadServerRows(page, data) {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve(data.rows.slice(page , 5, (page + 1),  5));
-//     }, randomInt(100, 600)); // simulate network latency
-//   });
-// }
+// // function loadServerRows(page, data) {
+// //   return new Promise((resolve) => {
+// //     setTimeout(() => {
+// //       resolve(data.rows.slice(page , 5, (page + 1),  5));
+// //     }, randomInt(100, 600)); // simulate network latency
+// //   });
+// // }
 
 // const NewsList = () => {
 //   const { data } = useDemoData({
@@ -26,18 +26,24 @@
 //   const [rowSelectionModel, setRowSelectionModel] = React.useState([]);
 //   const [searchTerm, setSearchTerm] = React.useState('');
 
+//   const fetchServerData = async (page, pageSize) => {
+//     const response = await fetch(`http://localhost:5000/api/news/getNews?pagenum=${page}&pagesize=${pageSize}`);
+//     const data = await response.json();
+//     return data;
+//   };
+  
 //   React.useEffect(() => {
 //     let active = true;
 
 //     const fetchData = async () => {
 //       setLoading(true);
-//       const newRows = await loadServerRows(paginationModel.page, data);
+//       const serverData = await fetchServerData(paginationModel.page, data);
 
 //       if (!active) {
 //         return;
 //       }
 
-//       setRows(newRows);
+//       setRows(serverData);
 //       setLoading(false);
 //     };
 
@@ -78,7 +84,7 @@
 //           {...data}
 //           rows={rows}
 //           pagination
-//           checkboxSelection
+//         //   checkboxSelection
 //           paginationModel={paginationModel}
 //           pageSizeOptions={[5]}
 //           rowCount={100}

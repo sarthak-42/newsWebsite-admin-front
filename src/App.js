@@ -7,10 +7,10 @@ import Dashboard from './pages/dashboard';
 // import Products from './pages/products';
 // import Settings from './pages/settings';
 // import Account from './pages/account';
-import View from './components/dashboard/View';
+// import View from './components/dashboard/View';
 import Login from './components/account/login';
 import NotFound from './pages/NotFound';
-import NewsList from './components/dashboard/newsList';
+// import NewsList from './components/dashboard/newsList';
 import AccountContext from './utils/AccountContext';
 import Category from './components/dashboard/category';
 // import NewsAdded from './components/dashboard/newsAdded';
@@ -45,9 +45,9 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         {/* <Route path="/account" element={<Account />}/> */}
         <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/featured" element={<View/>}/>
-        <Route path="/categories" element={<NotFound/>}/>
-        <Route path="/newsList" element={<NewsList/>}/>
+        <Route path="/featured" element={<NotFound/>}/>
+        {/* <Route path="/categories" element={<NotFound/>}/> */}
+        {/* <Route path="/newsList" element={<NewsList/>}/> */}
         <Route path="/category" element={<Category/>}/>
         {/* <Route path="/settings" element={<Settings />}/> */}
       </Routes>

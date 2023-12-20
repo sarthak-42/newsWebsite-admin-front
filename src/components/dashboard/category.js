@@ -52,7 +52,7 @@ const Category = () => {
         },
       };
       const response = await axios.get(
-        "http://localhost:5000/api/category/getCategory",
+        "https://my-punjabi-admin-server.onrender.com/api/category/getCategory",
         config
       );
       const cat = response.data.categories.map((index) => {
@@ -96,7 +96,7 @@ const Category = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:5000/api/category/addCategory",
+        "https://my-punjabi-admin-server.onrender.com/api/category/addCategory",
         { category },
         config
       );

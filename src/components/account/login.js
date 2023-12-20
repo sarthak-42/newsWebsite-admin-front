@@ -125,7 +125,7 @@ const Login = () => {
             Object.keys(error).length > 0 ? "block" : "hidden"
           }`}
         >
-          Error: {error.message || "An error occurred"}
+          {/* Error: {error.message || "An error occurred"} */}
         </p>
         <label htmlFor="email" className="form-label">
           Email
